@@ -1,3 +1,4 @@
+const infos = require('./info');
 /**
  * Default help method of bd_mailer
  *
@@ -7,6 +8,8 @@
  *         <--help>
  *
  */
+
+
 
 const help = () => {
     const {argv} = require('process');
@@ -30,7 +33,10 @@ const help = () => {
             '\t status  See status of your current transactions\n',
             '\t abort \t Abort the message sending'
         );
-    } else {
+    } else if (argv[2] === 'i' || argv[2] === '-i' || argv[2] === '-info' || argv[2] === '--info' || argv[2] === 'info'){
+        infos();
+    }
+    else {
         console.log(`Unknown option : ${argv[2]}`,
             '\nUSAGE : bd_mailer [--help] [--info] [--status] [--version] \n',
             '<command> [<args>]\n'
