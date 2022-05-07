@@ -1,6 +1,7 @@
 const infos = require('./info');
 const helps = require('./help');
 const versions = require('./version');
+const unknowns = require('./unknown');
 /**
  * Default  method of bd_mailer
  *
@@ -22,10 +23,7 @@ const def = () => {
         versions();
     }
     else {
-        console.log(`Unknown option : ${argv[2]}`,
-            '\nUSAGE : bd_mailer [--help] [--info] [--status] [--version] \n',
-            '<command> [<args>]\n'
-        );
+        unknowns(argv[2]);
     }
 };
 
