@@ -1,5 +1,3 @@
-const {argv} = require("process");
-
 /**
  * Default help method of bd_mailer
  *
