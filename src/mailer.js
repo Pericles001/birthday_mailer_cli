@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const help = require('./commands/defaults/help');
+const defs = require('./commands/defaults/default');
 
 /**
  * Script written to help automate birthday messages to friends and relatives
@@ -10,5 +10,5 @@ const help = require('./commands/defaults/help');
  */
 
 (() => {
-    help();
+    defs();
 })();
