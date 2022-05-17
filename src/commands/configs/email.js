@@ -1,5 +1,3 @@
-//import {ask, userInfos} from "./parameters";
-const param = require('./parameters');
 /**
  * Script for email configs
  */
@@ -9,4 +7,4 @@ const mail = () => ask.question('\t Email address : (tester@gmail.com)\t', (targ
     ask.close();
 });
 
-module.exports = mail
+export {mail};

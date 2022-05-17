@@ -3,6 +3,8 @@ import {help} from "./help.js";
 import {version} from "./version.js";
 import {unknown} from "./unknown.js";
 import {conf} from "../configs/config.js";
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 /**
  * Default  method of bd_mailer
  *
