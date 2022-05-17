@@ -14,4 +14,4 @@ const version = () => {
     );
 };
 
-module.exports = version;
+export {version};

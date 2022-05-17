@@ -1,7 +1,8 @@
-const infos = require('./info');
-const helps = require('./help');
-const versions = require('./version');
-const unknowns = require('./unknown');
+import {info} from "./info.js";
+import {help} from "./help.js";
+import {version} from "./version.js";
+import {unknown} from "./unknown.js";
+import {conf} from "../configs/config.js";
 /**
  * Default  method of bd_mailer
  *
@@ -16,15 +17,17 @@ const def = () => {
     const {argv} = require('process');
 
     if (argv[2] === undefined || argv[2] === 'help' || argv[2] === '--help') {
-        helps();
+        help();
     } else if (argv[2] === 'i' || argv[2] === '-i' || argv[2] === '-info' || argv[2] === '--info' || argv[2] === 'info') {
-        infos();
+        info();
     } else if (argv[2] === 'v' || argv[2] === '-v' || argv[2] === '-version'|| argv[2] === '--version'|| argv[2] === 'version'){
-        versions();
+        version();
+    } else if (argv[2] === 'config'){
+        conf();
     }
     else {
-        unknowns(argv[2]);
+        unknown(argv[2]);
     }
 };
 
-module.exports = def;
+export {def}

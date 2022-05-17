@@ -22,4 +22,4 @@ const info = () => {
     );
 };
 
-module.exports = info;
+export { info };

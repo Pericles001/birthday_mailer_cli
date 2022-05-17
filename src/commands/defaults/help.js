@@ -29,4 +29,4 @@ const help = () => {
     );
 };
 
-module.exports = help;
+export {help};

@@ -8,4 +8,5 @@ const unknown = (args) => {
         '\nUSAGE : bd_mailer [--help] [--info] [--status] [--version] \n',
         '<command> [<args>]\n')
 }
-module.exports = unknown;
+
+export {unknown};
