@@ -1,3 +1,4 @@
+import * as process from "process";
 import {info} from "./info.js";
 import {help} from "./help.js";
 import {version} from "./version.js";

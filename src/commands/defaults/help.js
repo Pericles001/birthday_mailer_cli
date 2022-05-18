@@ -7,6 +7,7 @@
  *         <--help>
  *
  */
+import * as readline from "readline";
 
 const help = () => {
     console.log('USAGE : bd_mailer [--help] [--info] [--status] [--version] \n',
