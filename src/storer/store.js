@@ -2,7 +2,7 @@
 
 
 /**
- * Script that store the data in the local stocks of the machine
+ * Script that store the data in the local storer of the machine
  */
 
 import {userInfos} from "../commands/configs/parameters.js";
