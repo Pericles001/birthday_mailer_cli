@@ -7,10 +7,11 @@ const readline = require('readline');
  */
 
 const userInfos = {};
+const targetInfos = {};
 const ask = readline.createInterface(
     {
         input: process.stdin,
         output: process.stdout
     });
 
-export {userInfos, ask};
+export {userInfos, ask, targetInfos};
