@@ -1,4 +1,4 @@
-import {uName} from "./name.js";
+import {uName, uNameTgt} from "./name.js";
 
 /**
  * Method to configure user information
@@ -14,4 +14,17 @@ const conf = () => {
     uName();
 };
 
-export {conf};
+
+const confTgt = () => {
+    console.log("This walk-trough will guide you through creating your receiver information's details",
+        '\n',
+        '\nSee bd_mailer help init for more documented about this command fields',
+        '\n',
+        '\nPress ^C to exit at anytime'
+    );
+    uNameTgt();
+};
+
+
+
+export {conf, confTgt};

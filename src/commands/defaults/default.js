@@ -1,10 +1,10 @@
-import * as process from "process";
 import {info} from "./info.js";
 import {help} from "./help.js";
 import {version} from "./version.js";
 import {unknown} from "./unknown.js";
-import {conf} from "../configs/config.js";
-import { createRequire } from 'module';
+import {conf, confTgt} from "../configs/config.js";
+import {createRequire} from 'module';
+
 const require = createRequire(import.meta.url);
 /**
  * Default  method of bd_mailer
@@ -23,12 +23,13 @@ const def = () => {
         help();
     } else if (argv[2] === 'i' || argv[2] === '-i' || argv[2] === '-info' || argv[2] === '--info' || argv[2] === 'info') {
         info();
-    } else if (argv[2] === 'v' || argv[2] === '-v' || argv[2] === '-version'|| argv[2] === '--version'|| argv[2] === 'version'){
+    } else if (argv[2] === 'v' || argv[2] === '-v' || argv[2] === '-version' || argv[2] === '--version' || argv[2] === 'version') {
         version();
-    } else if (argv[2] === 'config'){
+    } else if (argv[2] === 'config') {
         conf();
-    }
-    else {
+    } else if (argv[2] === 'to') {
+        confTgt();
+    } else {
         unknown(argv[2]);
     }
 };
