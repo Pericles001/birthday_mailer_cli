@@ -3,7 +3,7 @@
  */
 
 import {ask, userInfos, targetInfos} from "./parameters.js";
-import {storage} from "../../../storer/store.js";
+import {storage} from "../../storer/store.js";
 
 
 const mail = () => ask.question('\t Email address : (tester@gmail.com)\t', (target) => {
