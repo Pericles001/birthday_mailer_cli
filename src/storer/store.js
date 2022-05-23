@@ -5,7 +5,7 @@
  * Script that store the data in the local storer of the machine
  */
 
-import {userInfos} from "../commands/configs/parameters.js";
+import {userInfos} from "../commands/configs/sender/parameters.js";
 import {LocalStorage} from "node-localstorage";
 
 const data = JSON.stringify(userInfos);
