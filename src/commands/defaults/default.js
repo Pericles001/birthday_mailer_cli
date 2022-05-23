@@ -2,7 +2,7 @@ import {info} from "./info.js";
 import {help} from "./help.js";
 import {version} from "./version.js";
 import {unknown} from "./unknown.js";
-import {conf} from "../configs/sender/config.js";
+import {conf, confTgt} from "../configs/config.js";
 import {createRequire} from 'module';
 
 const require = createRequire(import.meta.url);
@@ -27,6 +27,8 @@ const def = () => {
         version();
     } else if (argv[2] === 'config') {
         conf();
+    } else if (argv[2] === 'to') {
+        confTgt();
     } else {
         unknown(argv[2]);
     }
