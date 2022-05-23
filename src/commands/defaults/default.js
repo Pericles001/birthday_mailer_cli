@@ -2,7 +2,7 @@ import {info} from "./info.js";
 import {help} from "./help.js";
 import {version} from "./version.js";
 import {unknown} from "./unknown.js";
-import {conf} from "../configs/config.js";
+import {conf} from "../configs/sender/config.js";
 import {createRequire} from 'module';
 
 const require = createRequire(import.meta.url);
