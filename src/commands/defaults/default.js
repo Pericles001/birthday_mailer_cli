@@ -4,6 +4,8 @@ import {version} from "./version.js";
 import {unknown} from "./unknown.js";
 import {conf, confTgt} from "../configs/config.js";
 import {createRequire} from 'module';
+import {targetList, userList} from "../configs/list.js";
+import {argv} from "process";
 
 const require = createRequire(import.meta.url);
 /**
@@ -26,12 +28,26 @@ const def = () => {
     } else if (argv[2] === 'v' || argv[2] === '-v' || argv[2] === '-version' || argv[2] === '--version' || argv[2] === 'version') {
         version();
     } else if (argv[2] === 'config') {
-        conf();
+        if (argv[3] === 'list' || argv[3] === 'l')
+            userList();
+        else
+            conf();
     } else if (argv[2] === 'to') {
-        confTgt();
+        if (argv[3] === 'list' || argv[3] === 'l')
+            targetList();
+        else
+            confTgt()
     } else {
         unknown(argv[2]);
     }
 };
 
 export {def}
+
+/**
+ * else if (argv[2] == 'config' && (argv[3] === 'l' || argv[3] === 'list')) {
+ *         userList();
+ *     } else if (argv[2] === 'to' && (argv[3] === 'l' || argv[3] === 'list')) {
+ *         targetList();
+ *     }
+ */
