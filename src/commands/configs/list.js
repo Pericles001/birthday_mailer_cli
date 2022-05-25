@@ -4,9 +4,12 @@
 import {targetInfos, userInfos} from "./parameters.js";
 import {storage} from "../../storer/store.js";
 
+const [userTab, targetTab] = [JSON.parse(storage.getItem('userInfos')), JSON.parse(storage.getItem('targetInfos'))];
+
+
 const userList = () => {
 
-    const userTab = JSON.parse(storage.getItem('userInfos'));
+
     console.table(
         [
             {field: 'user.name', value: userTab[0]},
@@ -20,10 +23,10 @@ const userList = () => {
 const targetList = () => {
     console.table(
         [
-            {field: 'target.name', value: targetInfos.name},
-            {field: 'target.email', value: targetInfos.mail},
-            {field: 'target.telegram', value: targetInfos.gram},
-            {field: 'target.whatsapp', value: targetInfos.what}
+            {field: 'target.name', value: targetTab[0]},
+            {field: 'target.telegram', value: targetTab[1]},
+            {field: 'target.whatsapp', value: targetTab[2]},
+            {field: 'target.email', value: targetTab[3]},
         ]
     );
 }
