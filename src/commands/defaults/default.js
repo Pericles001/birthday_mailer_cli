@@ -7,6 +7,7 @@ import {createRequire} from 'module';
 import {targetList, userList} from "../configs/list.js";
 import {argv} from "process";
 import {setDate, setMsg} from "../set/set.js";
+import {ask} from "../configs/parameters.js";
 
 const require = createRequire(import.meta.url);
 /**
@@ -43,6 +44,8 @@ const def = () => {
             setMsg();
         else if (argv[3] === 'date')
             setDate();
+        else
+            ask.close();
     } else {
         unknown(argv[2]);
     }
