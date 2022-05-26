@@ -1,7 +1,7 @@
 /**
  * Script that is used to set the target msg and date
  */
-import {getDate} from "../configs/date.js";
+import {getDate} from "../configs/date/date.js";
 
 const setDate = () => {
     console.log("This walk-trough will guide you through adding  birthdate ",
