@@ -6,6 +6,7 @@ import {conf, confTgt} from "../configs/config.js";
 import {createRequire} from 'module';
 import {targetList, userList} from "../configs/list.js";
 import {argv} from "process";
+import {setDate, setMsg} from "../set/set.js";
 
 const require = createRequire(import.meta.url);
 /**
@@ -37,17 +38,14 @@ const def = () => {
             targetList();
         else
             confTgt()
+    } else if (argv[2] === 'set') {
+        if (argv[3] === 'msg')
+            setMsg();
+        else if (argv[3] === 'date')
+            setDate();
     } else {
         unknown(argv[2]);
     }
 };
 
 export {def}
-
-/**
- * else if (argv[2] == 'config' && (argv[3] === 'l' || argv[3] === 'list')) {
- *         userList();
- *     } else if (argv[2] === 'to' && (argv[3] === 'l' || argv[3] === 'list')) {
- *         targetList();
- *     }
- */
