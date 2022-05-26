@@ -6,12 +6,13 @@ const readline = require('readline');
  * Container for parameters
  */
 
-const userInfos = {};
-const targetInfos = {};
+const [userInfos, targetInfos, targetDate, targetMsg] = [{}, {}, {}, {}];
+/*const userInfos = {};
+const targetInfos = {};*/
 const ask = readline.createInterface(
     {
         input: process.stdin,
         output: process.stdout
     });
 
-export {userInfos, ask, targetInfos};
+export {userInfos, ask, targetInfos, targetDate, targetMsg};

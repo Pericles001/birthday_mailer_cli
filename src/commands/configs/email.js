@@ -2,7 +2,7 @@
  * Script for email configs
  */
 
-import {ask, userInfos, targetInfos} from "./parameters.js";
+import {ask, targetInfos, userInfos} from "./parameters.js";
 import {storage} from "../../storer/store.js";
 
 
@@ -10,7 +10,7 @@ const mail = () => ask.question('\t Email address : (tester@gmail.com)\t', (targ
     target ? userInfos.mail = target : userInfos.mail = 'tester@gmail.com';
     storage.setItem('userInfos', JSON.stringify(Object.values(userInfos)));
     ask.close();
-    console.log(storage.getItem('userInfos'));
+    // console.log(storage.getItem('userInfos'));
 
 });
 
@@ -18,7 +18,7 @@ const mailTgt = () => ask.question('\t Email address : (tester@gmail.com)\t', (t
     target ? targetInfos.mail = target : targetInfos.mail = 'tester@gmail.com';
     storage.setItem('targetInfos', JSON.stringify(Object.values(targetInfos)));
     ask.close();
-    console.log(storage.getItem('targetInfos'));
+    // console.log(storage.getItem('targetInfos'));
 
 });
 

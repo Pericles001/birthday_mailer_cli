@@ -4,6 +4,10 @@ import {version} from "./version.js";
 import {unknown} from "./unknown.js";
 import {conf, confTgt} from "../configs/config.js";
 import {createRequire} from 'module';
+import {targetList, userList} from "../configs/list.js";
+import {argv} from "process";
+import {setDate, setMsg} from "../set/set.js";
+import {ask} from "../configs/parameters.js";
 
 const require = createRequire(import.meta.url);
 /**
@@ -26,9 +30,22 @@ const def = () => {
     } else if (argv[2] === 'v' || argv[2] === '-v' || argv[2] === '-version' || argv[2] === '--version' || argv[2] === 'version') {
         version();
     } else if (argv[2] === 'config') {
-        conf();
+        if (argv[3] === 'list' || argv[3] === 'l')
+            userList();
+        else
+            conf();
     } else if (argv[2] === 'to') {
-        confTgt();
+        if (argv[3] === 'list' || argv[3] === 'l')
+            targetList();
+        else
+            confTgt()
+    } else if (argv[2] === 'set') {
+        if (argv[3] === 'msg')
+            setMsg();
+        else if (argv[3] === 'date')
+            setDate();
+        else
+            ask.close();
     } else {
         unknown(argv[2]);
     }
