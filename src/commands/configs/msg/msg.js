@@ -3,9 +3,10 @@
 *
 */
 
+import {targetMsg} from "../parameters.js";
 
 const getMsg = () => {
-
+    
 }
 
 export {getMsg};
