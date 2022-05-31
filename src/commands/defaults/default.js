@@ -7,9 +7,8 @@ import {createRequire} from 'module';
 import {targetList, userList} from "../configs/list.js";
 import {argv} from "process";
 import {setDate, setMsg} from "../set/set.js";
-import {ask} from "../configs/parameters.js";
+import {ask, require} from "../configs/parameters.js";
 
-const require = createRequire(import.meta.url);
 /**
  * Default  method of bd_mailer
  *
