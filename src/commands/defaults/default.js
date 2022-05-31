@@ -4,10 +4,11 @@ import {version} from "./version.js";
 import {unknown} from "./unknown.js";
 import {conf, confTgt} from "../configs/config.js";
 import {createRequire} from 'module';
-import {targetList, userList} from "../configs/list.js";
+import {targetList, targetText, userList} from "../configs/list.js";
 import {argv} from "process";
 import {setDate, setMsg} from "../set/set.js";
 import {ask, require} from "../configs/parameters.js";
+import {readFile} from "../configs/msg/msg.js";
 
 /**
  * Default  method of bd_mailer
@@ -36,6 +37,8 @@ const def = () => {
     } else if (argv[2] === 'to') {
         if (argv[3] === 'list' || argv[3] === 'l')
             targetList();
+        else if (argv[3] === 'msg')
+            readFile('../src/storage/message').then(r => console.log("\n"));
         else
             confTgt()
     } else if (argv[2] === 'set') {

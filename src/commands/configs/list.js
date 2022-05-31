@@ -4,11 +4,14 @@
 import {targetDate, targetInfos, userInfos} from "./parameters.js";
 import {storage} from "../../storer/store.js";
 
-const [userTab, targetTab, dateTab] = [JSON.parse(storage.getItem('userInfos')), JSON.parse(storage.getItem('targetInfos')), JSON.parse(storage.getItem('targetDate'))];
+const [userTab, targetTab, dateTab, msgTab] = [
+    JSON.parse(storage.getItem('userInfos')),
+    JSON.parse(storage.getItem('targetInfos')),
+    JSON.parse(storage.getItem('targetDate')),
+    JSON.parse(storage.getItem('targetMsg'))];
 
 
 const userList = () => {
-
 
     console.table(
         [
@@ -20,6 +23,7 @@ const userList = () => {
     );
 }
 
+
 const targetList = () => {
     console.table(
         [
@@ -28,9 +32,19 @@ const targetList = () => {
             {field: 'target.whatsapp', value: targetTab[2]},
             {field: 'target.email', value: targetTab[3]},
             {field: 'target.day', value: dateTab[0]},
-            {field: 'target.month', value: dateTab[1]}
+            {field: 'target.month', value: dateTab[1]},
         ]
     );
+
 }
 
-export {userList, targetList};
+
+const targetText = () =>{
+    console.table(
+        [
+            {field: 'target.text', value: msgTab[0]}
+        ]
+    )
+}
+
+export {userList, targetList, targetText};
