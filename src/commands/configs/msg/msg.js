@@ -3,21 +3,16 @@
 *
 */
 
-import {targetMsg} from "../parameters.js";
-const {exec} = require('child_process');
+import {editor, require} from "../parameters.js";
+import * as child_process from "child_process";
 
 const getMsg = () => {
-    exec('nano msg', (error, stdout, stderr)=> {
-        if (error) {
-            console.error(`error: ${error.message}`);
-            return;
-        }
+    const child = child_process.spawn(editor, ['../src/storage/message'], {
+        stdio: 'inherit'
+    });
+    child.on('exit', function (e, code) {
+        console.log("finished");
+    });
 
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-    })
 }
-
 export {getMsg};
