@@ -12,8 +12,8 @@ const fs = require('fs').promises;
 
 async function addHeader() {
     try {
-        const cLine = '# You can write your text down here'
-        await fs.writeFile('../src/storage/message', cLine, { flag: 'a' });
+        //const cLine = '# You can write your text down here'
+        await fs.writeFile('../src/storage/message', { flag: 'a' });
     } catch (error) {
         console.error(`Got an error trying to write to a file: ${error.message}`);
     }
