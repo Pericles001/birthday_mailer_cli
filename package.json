@@ -15,7 +15,8 @@
     "man": "man"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./src/mailer.js"
   },
   "repository": {
     "type": "git",

@@ -9,6 +9,17 @@ import {storage} from "../../../storer/store.js";
 
 const fs = require('fs').promises;
 
+
+async function addHeader() {
+    try {
+        const cLine = '# You can write your text down here'
+        await fs.writeFile('../src/storage/message', cLine, { flag: 'a' });
+    } catch (error) {
+        console.error(`Got an error trying to write to a file: ${error.message}`);
+    }
+}
+
+
 async function readFile(filePath) {
     try {
         const data = await fs.readFile(filePath);
@@ -39,9 +50,6 @@ const getMsg = () => {
     });
 
 }
-
-
-
 
 
 
