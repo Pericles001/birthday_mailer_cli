@@ -53,25 +53,25 @@ In order to benefit from birthsender services , you need to follow the steps bel
 * 1 - Clone the repository 
 
 
-    git clone https://github.com/Pericles001/repositories&name=birthsender
+            git clone https://github.com/Pericles001/repositories&name=birthsender
 
 * 2- Enter the project directory
 
 
-    cd birthday_mailer
+            cd birthday_mailer
 
 
 * 3- Install dependencies
 
 
-    npm install
+            npm install
 
 * 4- Choose wether to use npm scripting commands or legacy commands from the program but we suggest you to use legacy commands since they were tested and optimized.
 
 - With npm commands
 
 
-    less package.json
+            less package.json
 
 - Read carefully script commands so you can use them further.
 
@@ -80,7 +80,7 @@ In order to benefit from birthsender services , you need to follow the steps bel
 
 
 
-    cd src
+            cd src
 
 - You can view files in the src folder via __ls__ or __tree__
 
