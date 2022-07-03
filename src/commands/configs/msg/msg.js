@@ -3,7 +3,7 @@
 *
 */
 
-import {editor, require, targetInfos, targetMsg} from "../parameters.js";
+import {ask, editor, require, targetInfos, targetMsg} from "../parameters.js";
 import * as child_process from "child_process";
 import {storage} from "../../../storer/store.js";
 
@@ -26,6 +26,8 @@ async function readFile(filePath) {
         console.log(data.toString());
     } catch (error) {
         console.error(`Got an error trying to read the file: ${error.message}`);
+    } finally {
+        ask.close();
     }
 }
 
@@ -49,6 +51,7 @@ const getMsg = () => {
         saveMsg('../src/storage/message').then(r => console.log("Finished"));
     });
 
+    ask.close();
 }
 
 
