@@ -85,49 +85,52 @@ In order to benefit from birthsender services , you need to follow the steps bel
 - You can view files in the src folder via __ls__ or __tree__
 
 
-    src
-    ├── bots
-    │   ├── gmail
-    │   ├── sms
-    │   ├── telegram
-    │   └── whatsapp
-    ├── commands
-    │   ├── abort
-    │   │   └── abort.js
-    │   ├── configs
-    │   │   ├── config.js
-    │   │   ├── date
-    │   │   │   ├── date.js
-    │   │   │   ├── day.js
-    │   │   │   └── month.js
-    │   │   ├── email.js
-    │   │   ├── list.js
-    │   │   ├── msg
-    │   │   │   └── msg.js
-    │   │   ├── name.js
-    │   │   ├── parameters.js
-    │   │   ├── telegram.js
-    │   │   └── whatsapp.js
-    │   ├── defaults
-    │   │   ├── default.js
-    │   │   ├── help.js
-    │   │   ├── info.js
-    │   │   ├── status.js
-    │   │   ├── unknown.js
-    │   │   └── version.js
-    │   ├── set
-    │   │   └── set.js
-    │   └── status
-    │       └── status.js
-    ├── mailer.js
-    ├── storage
-    │   ├── message
-    │   ├── targetDate
-    │   ├── targetInfos
-    │   ├── targetMsg
-    │   └── userInfos
-    └── storer
-    └── store.js
+            src
+            ├── bots
+            │   ├── gmail
+            │   ├── sms
+            │   ├── telegram
+            │   └── whatsapp
+            ├── commands
+            │   ├── abort
+            │   │   └── abort.js
+            │   ├── configs
+            │   │   ├── config.js
+            │   │   ├── date
+            │   │   │   ├── date.js
+            │   │   │   ├── day.js
+            │   │   │   └── month.js
+            │   │   ├── email.js
+            │   │   ├── list.js
+            │   │   ├── msg
+            │   │   │   └── msg.js
+            │   │   ├── name.js
+            │   │   ├── parameters.js
+            │   │   ├── telegram.js
+            │   │   └── whatsapp.js
+            │   ├── defaults
+            │   │   ├── default.js
+            │   │   ├── help.js
+            │   │   ├── info.js
+            │   │   ├── status.js
+            │   │   ├── unknown.js
+            │   │   └── version.js
+            │   ├── set
+            │   │   └── set.js
+            │   └── status
+            │       └── status.js
+            ├── mailer.js
+            ├── storage
+            │   ├── message
+            │   ├── targetDate
+            │   ├── targetInfos
+            │   ├── targetMsg
+            │   └── userInfos
+            └── storer
+            └── store.js
+
+
+
 
 - The main file is __mailer.js__ , you can execute using :
 
