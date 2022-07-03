@@ -203,8 +203,13 @@ In case you want to contribute in the project updates, you can do so :
 
     Resolves #<issue number> 
 
+## Author
+
+__Pericles Adjovi__ : [Pericles001](https://github.com/Pericles001)
 
 ## License
+
+Not defined yet
 
 ## Credits
 
