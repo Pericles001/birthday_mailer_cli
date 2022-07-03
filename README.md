@@ -19,7 +19,11 @@ The tool is supposed to work by sending automated message to various application
 
 
 For the moment our package is not fully deployed so it works locally but you still have access to some script commands :
-- npm run dev: To launch the home of the program
+* Using npm:
+-npm run dev: To launch the home of the program
+
+* using legacy commands:
+
 
 To be more accurate you need to follow these steps to install the tool: 
 - git clone 
@@ -35,6 +39,8 @@ To be more accurate you need to follow these steps to install the tool:
 ### aborting
 
 ### testing
+
+## Contribute
 
 ## License
 
