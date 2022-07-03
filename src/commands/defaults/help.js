@@ -8,6 +8,8 @@
  *
  */
 
+import {ask} from "../configs/parameters.js";
+
 const help = () => {
     console.log('USAGE : bd_mailer [--help] [--info] [--status] [--version] \n',
         '<command> [<args>]\n',
@@ -27,6 +29,7 @@ const help = () => {
         '\t status  See status of your current transactions\n',
         '\t abort \t Abort the message sending'
     );
+    ask.close();
 };
 
 export {help};
