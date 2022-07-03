@@ -1,5 +1,5 @@
 import {mail, mailTgt} from "./email.js";
-import {ask, userInfos, targetInfos} from "./parameters.js";
+import {ask, targetInfos, userInfos} from "./parameters.js";
 
 /**
  * Script for whatsapp credential configuration
@@ -15,7 +15,6 @@ const whatsappTgt = () => ask.question('\t Whatsapp pseudo : (tester)\t', (targe
     target ? targetInfos.what = target : targetInfos.what = 'tester';
     mailTgt();
 });
-
 
 
 export {whatsapp, whatsappTgt};

@@ -1,7 +1,7 @@
 /**
  * Script that help list user and receiver information
  */
-import {targetDate, targetInfos, userInfos} from "./parameters.js";
+import {ask, targetDate, targetInfos, userInfos} from "./parameters.js";
 import {storage} from "../../storer/store.js";
 
 const [userTab, targetTab, dateTab, msgTab] = [
@@ -21,6 +21,7 @@ const userList = () => {
             {field: 'user.email', value: userTab[3]},
         ]
     );
+    ask.close();
 }
 
 
@@ -35,11 +36,11 @@ const targetList = () => {
             {field: 'target.month', value: dateTab[1]},
         ]
     );
-
+    ask.close();
 }
 
 
-const targetText = () =>{
+const targetText = () => {
     console.table(
         [
             {field: 'target.text', value: msgTab[0]}

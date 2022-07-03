@@ -7,6 +7,7 @@
  *         <--info>
  *
  */
+import {ask} from "../configs/parameters.js";
 
 const info = () => {
     console.log('\n',
@@ -20,6 +21,7 @@ const info = () => {
         '\n',
         'Have a look at our features!\n'
     );
+    ask.close();
 };
 
-export { info };
+export {info};

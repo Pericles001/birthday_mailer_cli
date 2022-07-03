@@ -26,5 +26,4 @@ const confTgt = () => {
 };
 
 
-
 export {conf, confTgt};

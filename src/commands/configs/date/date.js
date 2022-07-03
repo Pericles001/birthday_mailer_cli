@@ -4,8 +4,6 @@
 */
 
 
-
-import {ask, targetDate} from "../parameters.js";
 import {getDay} from "./day.js";
 
 

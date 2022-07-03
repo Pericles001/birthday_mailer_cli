@@ -2,7 +2,7 @@
  * Script for name configuration
  */
 
-import {ask, userInfos, targetInfos} from "./parameters.js";
+import {ask, targetInfos, userInfos} from "./parameters.js";
 import {telegram, telegramTgt} from "./telegram.js";
 
 const uName = () => ask.question('\t User name : (test)\t', (target) => {
@@ -16,4 +16,4 @@ const uNameTgt = () => ask.question('\t Target name : (test)\t', (target) => {
 });
 
 
-export {uName ,uNameTgt};
+export {uName, uNameTgt};
