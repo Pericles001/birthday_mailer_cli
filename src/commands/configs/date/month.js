@@ -2,7 +2,7 @@
  * Script that get target birthday
  */
 
-import {ask, targetDate, targetInfos} from "../parameters.js";
+import {ask, targetDate} from "../parameters.js";
 import {storage} from "../../../storer/store.js";
 
 const getMonth = () => ask.question('\t Month of birth: (03)\t', (target) => {

@@ -40,7 +40,7 @@ const targetList = () => {
 }
 
 
-const targetText = () =>{
+const targetText = () => {
     console.table(
         [
             {field: 'target.text', value: msgTab[0]}

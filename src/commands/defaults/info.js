@@ -24,4 +24,4 @@ const info = () => {
     ask.close();
 };
 
-export { info };
+export {info};
