@@ -221,3 +221,5 @@ Many resources have been helpful to do this project:
 [StackOverFlow](https://stackoverflow.com) : Pretty helpful to face off with errors
 
 [npm](https://npm.com) : Many packages that have been used were found there
+
+__Project still in development__
