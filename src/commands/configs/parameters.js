@@ -2,7 +2,7 @@ import {createRequire} from 'module';
 
 const require = createRequire(import.meta.url);
 const readline = require('readline');
-const editor = process.env.EDITOR;
+const editor = process.env.EDITOR || 'nano' || 'vi' || 'code';
 /**
  * Container for parameters
  */
