@@ -1,18 +1,29 @@
 /**
- * Script for email bot
+ * Script used to contain the Gmail email bot
  */
 
-import nodemailer from 'nodemailer';
+
+import {createRequire} from 'module';
 import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 // Load environment variables
+// Try multiple paths to find .env
+import {fileURLToPath} from 'url';
+import {dirname, join} from 'path';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const envPath = join(__dirname, '../../../.env');
-dotenv.config({ path: envPath });
 
+// Load environment variables from project root
+dotenv.config({path: join(__dirname, '../../../.env')});
+
+
+// Also try loading from current directory as fallback
+if (!process.env.GMAIL_USER) {
+    dotenv.config();
+}
+
+const require = createRequire(import.meta.url);
 
 class EmailBot {
     constructor() {
@@ -20,18 +31,32 @@ class EmailBot {
         this.isConfigured = false;
     }
 
-    /**
-     * Initialize the email transporter
-     */
     async initialize() {
         try {
-            // Check if required environment variables are set
+            console.log('🔧 Loading nodemailer...');
+
+            // Load nodemailer
+            const nodemailer = require('nodemailer');
+            console.log('Loaded via require');
+            console.log('Nodemailer object keys:', Object.keys(nodemailer));
+
+            // Use the CORRECT method name: createTransport (not createTransporter)
+            if (typeof nodemailer.createTransport !== 'function') {
+                throw new Error('createTransport method not found in nodemailer');
+            }
+
+            console.log('✅ Found createTransport method');
+
+            // Check environment variables
             if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
                 throw new Error('Gmail credentials not found in .env file');
             }
 
-            // Create transporter
-            this.transporter = nodemailer.createTransporter({
+            console.log('🔧 Creating transporter...');
+            console.log(`📧 Using email: ${process.env.GMAIL_USER}`);
+
+            // Create transporter using the CORRECT method name
+            this.transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
                     user: process.env.GMAIL_USER,
@@ -39,7 +64,7 @@ class EmailBot {
                 }
             });
 
-            // Verify connection
+            console.log('🔍 Verifying connection...');
             await this.transporter.verify();
             this.isConfigured = true;
             console.log('✅ Gmail connection verified successfully');
@@ -47,13 +72,20 @@ class EmailBot {
             return true;
         } catch (error) {
             console.error('❌ Failed to initialize Gmail bot:', error.message);
+
+            // Provide specific error guidance
+            if (error.message.includes('Invalid login')) {
+                console.log('\n💡 Authentication failed. Please check:');
+                console.log('1. Your Gmail address is correct in .env');
+                console.log('2. You are using an App Password (not regular password)');
+                console.log('3. 2-Factor Authentication is enabled on your Gmail');
+                console.log('4. App Password is 16 characters without spaces');
+            }
+
             return false;
         }
     }
 
-    /**
-     * Send a birthday email
-     */
     async sendBirthdayEmail(recipientInfo, message, senderInfo) {
         if (!this.isConfigured) {
             const initialized = await this.initialize();
@@ -63,6 +95,8 @@ class EmailBot {
         }
 
         try {
+            console.log(`📧 Preparing email for ${recipientInfo.name}...`);
+
             // Prepare email content
             const htmlContent = this.generateBirthdayHTML(recipientInfo, message, senderInfo);
             const textContent = this.generateBirthdayText(recipientInfo, message, senderInfo);
@@ -78,6 +112,8 @@ class EmailBot {
                 text: textContent,
                 html: htmlContent
             };
+
+            console.log(`📤 Sending email to ${recipientInfo.mail}...`);
 
             // Send email
             const info = await this.transporter.sendMail(mailOptions);
@@ -102,6 +138,8 @@ class EmailBot {
      * Generate HTML email content
      */
     generateBirthdayHTML(recipientInfo, message, senderInfo) {
+        const senderName = senderInfo.name || process.env.EMAIL_FROM_NAME || 'Your Friend';
+
         return `
         <!DOCTYPE html>
         <html>
@@ -171,7 +209,7 @@ class EmailBot {
                 
                 <div class="signature">
                     Best wishes,<br>
-                    <strong>${senderInfo.name || 'Your Friend'}</strong>
+                    <strong>${senderName}</strong>
                 </div>
                 
                 <div class="footer">
@@ -187,6 +225,8 @@ class EmailBot {
      * Generate plain text email content
      */
     generateBirthdayText(recipientInfo, message, senderInfo) {
+        const senderName = senderInfo.name || process.env.EMAIL_FROM_NAME || 'Your Friend';
+
         const defaultMessage = `
 Wishing you a very happy birthday! 🎉
 
@@ -202,54 +242,25 @@ Have a fantastic day! 🥳
 ${message || defaultMessage}
 
 Best wishes,
-${senderInfo.name || 'Your Friend'}
+${senderName}
 
 ---
 Sent with ❤️ using Birthday Mailer CLI
         `.trim();
     }
 
-    /**
-     * Test email configuration
-     */
     async testConnection() {
-        try {
-            const initialized = await this.initialize();
-            if (initialized) {
-                console.log('✅ Email configuration test passed!');
-                return true;
-            }
-            return false;
-        } catch (error) {
-            console.error('❌ Email configuration test failed:', error.message);
-            return false;
-        }
+        return await this.initialize();
     }
 
-    /**
-     * Send a test email
-     */
     async sendTestEmail(testRecipient = process.env.GMAIL_USER) {
-        try {
-            const testMessage = "This is a test message from your Birthday Mailer CLI! 🎉";
-            const testRecipientInfo = {
-                name: "Test User",
-                mail: testRecipient
-            };
-            const testSenderInfo = {
-                name: "Birthday Mailer Test"
-            };
+        const testRecipientInfo = {name: "Test User", mail: testRecipient};
+        const testSenderInfo = {name: "Test Sender"};
+        const testMessage = "This is a test from Birthday Mailer CLI!";
 
-            const result = await this.sendBirthdayEmail(testRecipientInfo, testMessage, testSenderInfo);
-            console.log('✅ Test email sent successfully!');
-            return result;
-        } catch (error) {
-            console.error('❌ Test email failed:', error.message);
-            throw error;
-        }
+        return await this.sendBirthdayEmail(testRecipientInfo, testMessage, testSenderInfo);
     }
 }
 
-// Export singleton instance
 const emailBot = new EmailBot();
 export default emailBot;
