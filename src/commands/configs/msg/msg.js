@@ -41,6 +41,24 @@ async function saveMsg(filePath) {
     }
 }
 
+// async function saveMsg(filePath) {
+//     try {
+//         const data = await fs.readFile(filePath);
+//         targetMsg.content = data.toString();
+//         storage.setItem('targetMsg', JSON.stringify(Object.values(targetMsg)));
+//         console.log("Message saved successfully!");
+//     } catch (error) {
+//         // If file reading fails, let user input message directly
+//         console.log("Could not read file. Let's enter the message directly:");
+//         ask.question('Enter your birthday message: ', (message) => {
+//             targetMsg.content = message;
+//             storage.setItem('targetMsg', JSON.stringify(Object.values(targetMsg)));
+//             console.log("Message saved successfully!");
+//             ask.close();
+//         });
+//     }
+// }
+
 
 const getMsg = () => {
     const child = child_process.spawn(editor, ['../src/storage/message'], {
